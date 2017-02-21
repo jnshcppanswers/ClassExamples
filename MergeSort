@@ -1,0 +1,54 @@
+#include<stdio.h>
+
+int A[101];
+int B[101];
+
+void SORT(int s, int e);
+
+int main() {
+	
+	int n, i;
+	
+	scanf("%d", &n);
+	
+	for(i=1;i<=n;i++) {
+		scanf("%d", &A[i]);
+	}
+	
+	SORT(1,n);
+	for(i=1;i<=n;i++)
+	{
+		printf("%d ", A[i]);
+	}
+	return 0;
+}
+
+void SORT(int s, int e) {
+	if(s==e) return;
+	int m, i, j, k;
+	
+	m = (s+e)/2;
+	
+	SORT(s,m);
+	SORT(m+1,e);
+	
+	i = s;
+	j = m+1;
+	k = s;
+	while(i<=m || j<=e) {
+		if((A[i] < A[j] && i<=m) || j>e){
+			B[k] = A[i];
+			i++;
+		}
+		else{
+			B[k] = A[j];
+			j++;
+		}
+		k++;
+		
+	}
+	
+	for (k=s ; k<=e ; k++) {
+		A[k] = B[k];
+	}
+}
