@@ -1,0 +1,29 @@
+#include <stdio.h>
+
+int data[10001];
+int result[101];
+
+int main(int argv, char **argc)
+{
+	int n, k, i, a, b;
+	
+	scanf("%d", &n);
+	for(i=1;i<=n;i++)
+	{
+		scanf("%d", &data[i]);
+	}
+	scanf("%d", &k);
+	int end = k;
+	while(k--)
+	{
+		int sum = 0;
+		scanf("%d %d", &a, &b);
+		for(i=a;i<=b;i++)
+		{
+			sum+=data[i];
+		}
+		result[k] = sum;
+	}
+	for(i=end-1;i>=0;i--) printf("%d\n", result[i]);
+	return 0;
+}
